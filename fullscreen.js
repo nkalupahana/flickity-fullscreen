@@ -155,18 +155,22 @@ function capitalize( text ) {
 var svgURI = 'http://www.w3.org/2000/svg';
 
 var pathDirections = {
-  view: 'M15,20,7,28h5v4H0V20H4v5l8-8Zm5-5,8-8v5h4V0H20V4h5l-8,8Z',
-  exit: 'M32,3l-7,7h5v4H18V2h4V7l7-7ZM3,32l7-7v5h4V18H2v4H7L0,29Z',
+  view: 'M 13 18 L 5 26 h 5 v 1 H 3 V 20 H 4 v 5 l 8 -8 Z m 5 -5 l 8 -8 v 5 h 1 V 3 H 20 V 4 h 5 l -8 8 Z',
+  exit: 'M 26 4 L 19 11 h 5 v 1 H 17 V 5 h 1 V 10 l 7 -7 z M 4 26 L 11 19 L 11 24 H 12 L 12 17 L 5 17 V 18 H 10 L 3 25 z',
 };
 
 FullscreenButton.prototype.createIcon = function() {
   var svg = document.createElementNS( svgURI, 'svg');
   svg.setAttribute( 'class', 'flickity-button-icon' );
-  svg.setAttribute( 'viewBox', '0 0 32 32' );
+  svg.setAttribute( 'viewBox', '0 0 29 29' );
   // path & direction
   var path = document.createElementNS( svgURI, 'path');
   var direction = pathDirections[ this.name ];
   path.setAttribute( 'd', direction );
+  path.setAttribute("stroke", "black");
+  path.setAttribute("stroke-linecap", "round");
+  path.setAttribute("stroke-linejoin", "round");
+  path.setAttribute("stroke-width", "1.5");
   // put it together
   svg.appendChild( path );
   this.element.appendChild( svg );
